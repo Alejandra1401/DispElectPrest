@@ -33,26 +33,23 @@ public class menuComputa
             switch (opt) 
             {
                 case 1:
-                    //c = m.IngresarComputador(c, sc);
-                    System.out.println("Pagina 3 en mantenimiento");
+                    c = m.IngresarComputador(c);
                     break;
                 case 2:
-                    //c = m.PrestarComputador(c, sc);
-                    System.out.println("Pagina 3 en mantenimiento");
+                    c = m.PrestarComputador(c);
                     break;
                 case 3:
-                    System.out.println("Pagina 3 en mantenimiento");
+                    c = m.modificarComp(c);
                     break;
                 case 4:
-                    System.out.println("Pagina 4 en mantenimiento");
+                    c = m.devolverComp(c);
                     break;
                 case 5:
-                    System.out.println("Pagina 5 en mantenimiento");
+                    m.MostrarDisponibles(c);
                     break;
                 case 6:
-                    System.out.println("Pagina 6 en mantenimiento");
+                    c = m.eliminarComp(c);
                     break;
-
                 default:
                     System.out.println("Hasta pronto");
                     bandera = false;

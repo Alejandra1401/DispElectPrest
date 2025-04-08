@@ -33,7 +33,7 @@ public class menuTablet
             switch (opt) 
             {
                 case 1:
-                    System.out.println("Pagina 1 en mantenimiento");
+                    
                     break;
                 case 2:
                     System.out.println("Pagina 2 en mantenimiento");

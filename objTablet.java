@@ -6,15 +6,18 @@ public class objTablet
     private Double precio;
     private String nombreUsuario;
     private boolean disponible;
+    private String cedula;
     public objTablet() {
     }
-    public objTablet(String serial, String marca, int tamaño, Double precio, String nombreUsuario, boolean disponible) {
+    public objTablet(String serial, String marca, int tamaño, Double precio, String nombreUsuario, boolean disponible,
+            String cedula) {
         this.serial = serial;
         this.marca = marca;
         this.tamaño = tamaño;
         this.precio = precio;
         this.nombreUsuario = nombreUsuario;
         this.disponible = disponible;
+        this.cedula = cedula;
     }
     public String getSerial() {
         return serial;
@@ -52,5 +55,12 @@ public class objTablet
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+    public String getCedula() {
+        return cedula;
+    }
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
     
 }
