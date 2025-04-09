@@ -1,33 +1,36 @@
 import java.util.Queue;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class menuComputa 
 {
     public Queue<objComput> menuComputador(Queue<objComput> c, Scanner sc) 
     {
         boolean bandera = true;
+        String rpta = "";
         metodos m = new metodos();
         int opt = 0;
-        while (bandera) {
-            System.out.println(" Seleccione lo que desea hacer ");
-            System.out.println("1 : Ingresar Computador");
-            System.out.println("2 : Prestar Computador");
-            System.out.println("3 : Modificar Computador");
-            System.out.println("4 : Devolver Computador");
-            System.out.println("5 : Mostrar inventario computador");
-            System.out.println("6 : Eliminar Computador");
-            System.out.println("7 : Regresar Menú Principal");
-            while (!sc.hasNextInt()) 
-            {
-                System.out.println("Digito Incorrecto por favor intente de nuevo....");
-                sc.next();
-
-            }
-            opt = sc.nextInt();
-            sc.nextLine();
+        while (bandera) 
+        {
+            do {
+                rpta = JOptionPane.showInputDialog("      COMPUTADOR \n" +
+                                                   "1.Registrar Computador\n" +
+                                                   "2.Prestar Computador\n" +
+                                                   "3.Modificar Computador\n" +
+                                                   "4.Devolver Computador\n" + 
+                                                   "5.Inventario de computadores \n" + 
+                                                   "6.Eliminar Computador\n" +
+                                                   "7.Menu Principal\n");
+            
+                if (rpta == null || !rpta.matches("\\d+")) {
+                    JOptionPane.showMessageDialog(null, "Dato incorrecto, reintente por favor");
+                }
+            } while (rpta == null || !rpta.matches("\\d+"));
+            opt = Integer.parseInt(rpta);
             if (opt < 1 || opt > 7) 
             {
-                System.out.println("Por favor ingrese un digito de 1 a 7");
+                JOptionPane.showMessageDialog(null, "Opción no valida, reintente por favor");
                 continue;
             }
             switch (opt) 
@@ -51,7 +54,7 @@ public class menuComputa
                     c = m.eliminarComp(c);
                     break;
                 default:
-                    System.out.println("Hasta pronto");
+                    JOptionPane.showMessageDialog(null, "Se ha salido del menu computadores, hasta pronto");
                     bandera = false;
                     break;
             }

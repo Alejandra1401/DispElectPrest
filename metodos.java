@@ -111,7 +111,7 @@ public class metodos
         MostrarDisponibles(c);
         while (!prestar) //en caso que ingrese serial errado vuelva y le pregunte 
         {
-            System.out.println("Ingrese el serial");
+            System.out.println("Ingrese el serial del computador a prestar");
             serial = sc.next();
             for (objComput o : c) 
             {
@@ -216,7 +216,7 @@ public class metodos
             c = IngresarComputador(c);
         }
         boolean devolver = false;
-        System.out.println("Ingrese el serial");
+        System.out.println("Ingrese el serial del computador a devolver");
         serial = sc.next();
         for (objComput o : c) 
         {

@@ -1,32 +1,34 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 public class menuPrincipal
 {
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
         boolean bandera = true;
+        String rpta = "";
         Queue<objComput> c = new LinkedList<>();
         Queue<objTablet> t = new LinkedList<>();
         int opt = 0;
         while (bandera) 
         {
-            System.out.println("Bienvenido al departamento de prestamos de dispositivos!");
-            System.out.println("Por favor seleccione dispositivo ");
-            System.out.println("1 : Computador");
-            System.out.println("2 : Tablet");
-            System.out.println("3 : Salir");
-            while (!sc.hasNextInt()) 
-            {
-                System.out.println("Digito incorrecto, por favor intente de nuevo....");
-                sc.next();
-            }
-            opt = sc.nextInt();//Captura la opción que eligio 
-            sc.nextLine();
+            do {
+                rpta = JOptionPane.showInputDialog("------ BIENVENIDO ------\n" +
+                                                   "1.Computador \n" +
+                                                   "2.Tablet\n" +
+                                                   "3.Salir\n");
+            
+                if (rpta == null || !rpta.matches("\\d+")) {
+                    JOptionPane.showMessageDialog(null, "Dato incorrecto, reintente por favor");
+                }
+            } while (rpta == null || !rpta.matches("\\d+"));
+            opt = Integer.parseInt(rpta);//Captura la opción que eligio 
             if (opt < 1 || opt > 3) //Validación de la opción
             {
-                System.out.println("Por favor ingrese un digito entre 1 y 3");
+                JOptionPane.showMessageDialog(null, "Opción no válida, reintente por favor");
                 continue;
             }
             switch (opt) 
@@ -41,7 +43,7 @@ public class menuPrincipal
                     break;
 
                 default:
-                    System.out.println("Hasta Pronto");
+                    JOptionPane.showMessageDialog(null, "El programa ha terminado");
                     bandera = false;
                     break;
             }
