@@ -206,29 +206,36 @@ public class metodos
             return c; 
         }
         return c;
-    }
+    }//FALTA ORGANIZAR EL MESAJE EN CASO TAL QUE NO HAYA PRESTADO Y QUE NO EXISTA EL SERIAL, EN ESTE MOMENTO MUESTRA EL MISMO MENSAJE PARA LAS DOS OPCIONES 
     public Queue<objComput> devolverComp(Queue<objComput> c)
-    { //FALTA ORGANIZAR EL MESAJE EN CASO TAL QUE NO HAYA PRESTADO Y QUE NO EXISTA EL SERIAL, EN ESTE MOMENTO MUESTRA EL MISMO MENSAJE PARA LAS DOS OPCIONES 
+    { 
         String serial = "";
-        while (c.isEmpty()) 
+        if (c.isEmpty()) //Con if para que no se me quede en un ciclo infinito 
         {
             System.out.println("No hay dispositivos en en la cola");
             c = IngresarComputador(c);
         }
-        boolean devolver = false;
+        boolean encontrado = false;
         System.out.println("Ingrese el serial del computador a devolver");
         serial = sc.next();
         for (objComput o : c) 
-        {
-            if (o.getSerial().equalsIgnoreCase(serial) && !o.isDisponible()) 
-            {    
-                devolver = true;
-                o.setDisponible(true);
-                System.out.println("Computador devuelto");
-                break;
+        {  if (o.getSerial().equalsIgnoreCase(serial))
+            {
+                encontrado = true;
+                if ( !o.isDisponible()) 
+                {    
+                    o.setDisponible(true);
+                    System.out.println("Computador devuelto correctamente");
+                    break;
                 }
+                else 
+                {
+                    System.out.println("El computador está disponible");
+                }
+                break;
+            }
         }
-        if(!devolver)
+        if(!encontrado)
         {
             System.out.println("No hay computadores con ese serial, intente nuevamente");
         }            
